@@ -14,27 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample.camel;
+package com.redpath.client;
 
-import org.apache.camel.builder.RouteBuilder;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//CHECKSTYLE:OFF
 /**
- * A simple Camel route that triggers from a timer and calls a bean and prints to system out.
- * <p/>
- * Use <tt>@Component</tt> to make Camel auto detect this route when starting.
+ * A sample Spring Boot application that starts the Camel routes.
  */
-@Component
-public class MyCamelRouter extends RouteBuilder {
+@SpringBootApplication
+public class FTPClientApplication {
 
-    @Override
-    public void configure() throws Exception {
-        from("timer:hello?period={{timer.period}}").routeId("hello").routeGroup("hello-group")
-                .transform().method("myBean", "saySomething")
-                .filter(simple("${body} contains 'foo'"))
-                    .to("log:foo")
-                .end()
-                .to("stream:out");
+    /**
+     * A main method to start this application.
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(FTPClientApplication.class, args);
     }
 
 }
+//CHECKSTYLE:ON

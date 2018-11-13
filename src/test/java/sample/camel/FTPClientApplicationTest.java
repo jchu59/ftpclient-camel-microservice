@@ -25,20 +25,23 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.spring.CamelSpringBootRunner;
 import org.apache.camel.test.spring.EnableRouteCoverage;
 import org.apache.camel.test.spring.MockEndpoints;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.redpath.client.FTPClientApplication;
+
 import static org.junit.Assert.assertTrue;
 
 @RunWith(CamelSpringBootRunner.class)
-@SpringBootTest(classes = MyCamelApplication.class,
+@SpringBootTest(classes = FTPClientApplication.class,
     properties = "greeting = Hello foo")
 @EnableRouteCoverage
 @MockEndpoints("log:foo") // mock the log:foo endpoint => mock:log:foo which we then use in the testing
 //@Ignore // enable me to run this test as well so we can cover testing the route completely
-public class FooApplicationTest {
+public class FTPClientApplicationTest {
 
     @Autowired
     private CamelContext camelContext;
@@ -46,6 +49,7 @@ public class FooApplicationTest {
     @EndpointInject(uri = "mock:log:foo")
     private MockEndpoint mock;
 
+    @Ignore
     @Test
     public void shouldSayFoo() throws Exception {
         mock.expectedBodiesReceived("Hello foo");

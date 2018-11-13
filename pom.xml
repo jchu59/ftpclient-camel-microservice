@@ -24,7 +24,7 @@
 
 
   <groupId>org.jchu</groupId>
-  <artifactId>camel-example-microservice</artifactId>
+  <artifactId>ftpclient-camel-microservice</artifactId>
   <version>0.1-SNAPSHOT</version>
   <name>Camel :: Example FTP Upload :: Spring Boot</name>
   <description>An example showing how to work with Camel and Spring Boot</description>
@@ -94,6 +94,11 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-stream-starter</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-ftp</artifactId>
+    </dependency>
+    
 
     <!-- test -->
     <dependency>
